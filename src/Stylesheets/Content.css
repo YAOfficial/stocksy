@@ -1,0 +1,15 @@
+.Content {
+  text-align: center;
+}
+
+.Content-header {
+  background-color: #268bff;
+  min-height: 100vh;
+  display: flex;
+  font-family: "Alata", sans-serif;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 600;
+  font-size: calc(10px + 2vmin);
+  color: #ffffff;
+}
