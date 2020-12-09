@@ -1,10 +1,11 @@
-import Header from './Components/Header';
-import Content from './Components/Content';
+
+import Search from './Components/SearchFunctionality';
+import CompanyDiv from './Components/CompanyComp';
 function Layout() {
   return (
       <>
-  <Header/>
-  <Content/>
+  <Search />
+ <CompanyDiv/>
     </>
   );
 }

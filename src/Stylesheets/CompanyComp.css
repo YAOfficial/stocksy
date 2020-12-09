@@ -1,0 +1,30 @@
+.stocklogo {
+  padding: 1vw;
+}
+
+#container {
+  height: 100vh;
+  margin: 0;
+  justify-content: center;
+  display: flex;
+  background: rgb(255, 255, 255);
+}
+
+#companyContainer {
+  color: rgb(64, 131, 255);
+}
+
+.list-group-flush {
+  background-color: blue !important;
+}
+
+.stocklogo {
+  border-radius: 2vw;
+}
+
+#myCard {
+  border-width: 1px;
+
+  border-top-left-radius: 2vw;
+  border-top-right-radius: 2vw;
+}

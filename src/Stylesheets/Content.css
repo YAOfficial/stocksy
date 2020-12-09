@@ -3,13 +3,25 @@
 }
 
 .Content-header {
-  background-color: #268bff;
-  min-height: 100vh;
-  display: flex;
+  text-align: center;
+  background-color: #ffffff;
+  min-height: 10vh;
+  display: inline-grid;
   font-family: "Alata", sans-serif;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-flow: wrap;
   align-items: center;
+  margin-top: 2vw;
+  flex-direction: row;
   font-weight: 600;
   font-size: calc(10px + 2vmin);
-  color: #ffffff;
+  color: #007bff;
+}
+
+#github {
+  margin: auto;
+}
+
+input {
+  color: #007bff;
 }
