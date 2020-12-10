@@ -5,7 +5,7 @@
 .Content-header {
   text-align: center;
   background-color: #ffffff;
-  min-height: 10vh;
+
   display: inline-grid;
   font-family: "Alata", sans-serif;
   justify-content: space-evenly;
@@ -15,7 +15,7 @@
   flex-direction: row;
   font-weight: 600;
   font-size: calc(10px + 2vmin);
-  color: #007bff;
+  color: rgb(52 58 64);
 }
 
 #github {
@@ -23,5 +23,5 @@
 }
 
 input {
-  color: #007bff;
+  color: rgb(52 58 64);
 }

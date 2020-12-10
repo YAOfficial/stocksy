@@ -7,16 +7,15 @@ class Companyinfo extends React.Component {
         return (
             <>
             
-            
-            <Card id="myCard" border="primary"  style={{ width: "20vw" }}>
+    <Card className="col-sm-12 col-md-12 col-lg-12 col-xl-12"   text="dark"  >
   <Card.Img variant="top"  className="stocklogo" src={this.props.imglink} />
-  <Card.Body>
-    <Card.Title>{this.props.name}</Card.Title>
+  <Card.Body  >
+    <Card.Title text="primary">{this.props.name}</Card.Title>
     
   </Card.Body>
-  <ListGroup  className="flush listG">
-    <ListGroupItem > Industry: {this.props.industry}</ListGroupItem>
-    <ListGroupItem>Market-Cap: {this.props.networth1} (in millions)  </ListGroupItem>
+  <ListGroup   className="flush listG">
+    <ListGroupItem  > Industry: {this.props.industry}</ListGroupItem>
+    <ListGroupItem>Market Cap: {this.props.networth1}  </ListGroupItem>
     <ListGroupItem>Ipo'ed at : {this.props.ipo} </ListGroupItem>
   </ListGroup>
   

@@ -10,21 +10,12 @@
   background: rgb(255, 255, 255);
 }
 
-#companyContainer {
-  color: rgb(64, 131, 255);
-}
-
-.list-group-flush {
-  background-color: blue !important;
-}
-
-.stocklogo {
+#myCard {
+  border-width: 2px;
+  max-width: 100% !important;
   border-radius: 2vw;
 }
-
-#myCard {
-  border-width: 1px;
-
-  border-top-left-radius: 2vw;
-  border-top-right-radius: 2vw;
+#companyNewsContainer,
+#marketNewsContainer {
+  flex-wrap: wrap;
 }

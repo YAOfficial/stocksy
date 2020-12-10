@@ -7,6 +7,9 @@ import Companyinfo from "./CompanyInfo"
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import { FaGithub } from 'react-icons/fa';
+import CompanyNews from "./CompanyNews.js"
+
+
 
 
 
@@ -17,7 +20,24 @@ class App extends React.Component {
  function loadDoc(){
         // GETS VALUE OF THE STOCKS TEXT 
         const stock = document.getElementById("stocks").value;
-       
+        
+        const request2 = require('request');
+
+request2(`https://finnhub.io/api/v1/company-news?symbol=${stock}&from=2020-04-30&to=2020-05-01&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, body) => {
+  if (err) { return console.log(err); }
+ body.length = 6
+  class CompanyComponent extends React.Component{
+    render(){
+
+     
+        return (
+            <>
+            {body.map(item => <CompanyNews src={item.image} title={item.headline} words={item.summary} url={item.url} source={item.source} />)}
+            </>
+        )
+    }
+} ReactDom.render(<CompanyComponent/>, document.getElementById("companyNewsContainer"))
+});
         
       
     
@@ -81,9 +101,10 @@ else {
         'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
       }
     };
-   
+    
     //CALLING THE YAHOO FINANCE API 
     axios.request(options).then(function (response) {
+    
         console.log(response.data);
         // IF THE API DOESNT WORK SHOW ERROR ALERT
         if(!response.data.chart.result){
@@ -93,11 +114,9 @@ else {
             if (show) {
               return (
                 <Alert id="errorBox" variant="danger" onClose={() => setShow(false)} dismissible>
-                  <Alert.Heading variant="success">Oh snap! You got an error!</Alert.Heading>
+                  <Alert.Heading variant="success">Oh snap! we couldnt find market data for {document.getElementById("stocks").value}</Alert.Heading>
                   <p>
-                    Change this and that and try again. Duis mollis, est non commodo
-                    luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                    Cras mattis consectetur purus sit amet fermentum.
+                    Keep in mind this site is only for Us and Canadian stocks either write the stock correctly or try a different symbol
                   </p>
                 </Alert>
               );
@@ -105,11 +124,15 @@ else {
            
           
           }
+          document.getElementById("CompanyNews").style.display = "none"
+          document.getElementById("container").style.display = "none"
           document.getElementById("companyContainer").style.display = "none"
           ReactDom.render(<AlertDismissibleExample/>, document.getElementById("mains"));
         } else {
           // REMOVE ALERT BOX
           document.getElementById("errorBox").style.display = "none"
+          document.getElementById("container").style.display = "initial"
+          document.getElementById("CompanyNews").style.display = "flex"
          
         }
     }).catch(function (error) {
@@ -138,13 +161,13 @@ function validateBtn (val)  {
     <div className="Content" >
     
      
-      <header className="Content-header">
+      <header  className="Content-header col-sm-10 col-md-9 col-lg-6 col-xl-3">
         
         <p id="results"> Stock Info </p>
         <input type="text" id="stocks"  onKeyUp={ (e) => validateBtn(e.target.value) }></input>
-        <Button variant="outline-primary" type="button" id="button"  onClick={loadDoc}>Enter a stock symbol  </Button>
-        <FaGithub id="github" />
-      </header>
+        <Button variant="dark" type="button" id="button"  onClick={loadDoc}>Enter a stock symbol  </Button>
+        <FaGithub className="col-sm-10 col-md-9 col-lg-6 col-xl-3" id="github" />
+      </header> 
       <div id="mains" ></div>
     </div>
   );
