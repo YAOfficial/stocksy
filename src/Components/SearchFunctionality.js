@@ -8,27 +8,79 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import { FaGithub } from 'react-icons/fa';
 import CompanyNews from "./CompanyNews.js"
-
-
-
-
-
+import Card from 'react-bootstrap/Card'
+import PredictComp from "./PredictComp.js"
+import Plot from 'react-plotly.js';
 class App extends React.Component {
   
  render(){
+  
 
+  const { DateTime } = require("luxon");
+ 
  function loadDoc(){
-        // GETS VALUE OF THE STOCKS TEXT 
-        const stock = document.getElementById("stocks").value;
-        
-        const request2 = require('request');
 
-request2(`https://finnhub.io/api/v1/company-news?symbol=${stock}&from=2020-04-30&to=2020-05-01&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, body) => {
+
+  const stock = document.getElementById("stocks").value;
+
+ 
+  const request3 = require('request');
+  const request4 = require('request');
+  setInterval(function(){ 
+  request3(`https://finnhub.io/api/v1/stock/price-target?symbol=${stock}&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, body) => {
+    
   if (err) { return console.log(err); }
+  request4(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, mane) => {
+    if (err) { return console.log(err); }
+    console.log(mane)
+ 
+    console.log(body);
+    class PredictionComponent extends React.Component{
+      render(){
+          return (
+              <>
+             <PredictComp current={mane.c}  name={body.symbol} high={body.targetHigh} low={body.targetLow} mean={body.targetMean} />
+              </>
+          )
+      }
+  }ReactDom.render(<PredictionComponent/>, document.getElementById("pricesContainer"))
+  });});
+}, 5000);
+ 
+  var now = DateTime.local();
+  let a = now.toFormat('dd');
+  var format = { month: '2-digit'};
+  let b =  Intl.DateTimeFormat('en-US', format).format(now)
+  console.log(b)
+  let year =`${now.c.year}-${b}-${a}`
+ 
+  let pe = now.minus({year: 1});
+  
+
+ 
+  let past1 = `${pe.c.year}-${b}-${a}`
+  
+    
+  
+  console.log(year)
+  console.log(past1)
+        // GETS VALUE OF THE STOCKS TEXT 
+        const request2 = require('request');
+       
+request2(`https://finnhub.io/api/v1/company-news?symbol=${stock.toUpperCase()}&from=${past1}&to=${year}&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, body) => {
+  if (err) { return console.log(err); } 
+  
  body.length = 6
+ 
+ console.log(body)
+
   class CompanyComponent extends React.Component{
     render(){
-
+if(!body[0]){
+  document.getElementById("companyInfo").innerHTML = ""
+} else{
+  document.getElementById("companyInfo").innerHTML = "Company Info"
+}
      
         return (
             <>
@@ -47,20 +99,19 @@ request2(`https://finnhub.io/api/v1/company-news?symbol=${stock}&from=2020-04-30
         request(`https://finnhub.io/api/v1/stock/profile2?symbol=${stock}&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, body) => {
           if (err) { 
            console.log(err)
-          
+           document.getElementById("themain").style.display = "none"
+         
           }
           
 else {
  // LOG THE RETURNED VALUE FROM THE API 
+
     console.log(body)
-   let dataArray = []
-   
+   var dataArray = []
    dataArray.push(body)
-   if(!dataArray[0].name){
-    document.getElementById("companyContainer").style.display = "none"
-  }else {
-    document.getElementById("companyContainer").style.display = "initial"
-  }
+
+   var amo = dataArray
+
    // RUN THROUGH THE ARRAY AND ADD VALUES TO VARIABLES TO USE ON ELEMENTS
     class CompanyDiv extends React.Component {
    
@@ -82,8 +133,7 @@ else {
 }
  
  })
-       
-      
+
    // ESTABLISHING PARAMETERS FOR THE YAHOO FINANCE API READ THE YAHOO API DOC FOR INFO 
     const options = {
       method: 'GET',
@@ -91,8 +141,8 @@ else {
   params: {
     symbol:  stock,
     interval: '5m',
-    range: '1d',
-  
+    range: 'max',
+    
     comparisons: '^GDAXI,^FCHI'
   },
            // MY API KEY , CHECK THE YAHOO API DOC FOR MORE DETAILS
@@ -102,44 +152,94 @@ else {
       }
     };
     
+  
     //CALLING THE YAHOO FINANCE API 
     axios.request(options).then(function (response) {
+      let arr = response.data.chart.result[0].indicators.quote[0]
+     console.log(response)
     
-        console.log(response.data);
-        // IF THE API DOESNT WORK SHOW ERROR ALERT
-        if(!response.data.chart.result){
-          function AlertDismissibleExample() {
-            const [show, setShow] = useState(true);
+     var times = response.data.chart.result[0].timestamp
+   
+     console.log(times)
+
+     document.getElementById("mains").style.display = "none"
+     var format = {year: 'numeric', month: '2-digit' , day: 'numeric'};
+
+     document.getElementById("themain").style.display = "inherit"
+     
+      class StockChart extends React.Component {
+        render() {
           
-            if (show) {
-              return (
-                <Alert id="errorBox" variant="danger" onClose={() => setShow(false)} dismissible>
-                  <Alert.Heading variant="success">Oh snap! we couldnt find market data for {document.getElementById("stocks").value}</Alert.Heading>
-                  <p>
-                    Keep in mind this site is only for Us and Canadian stocks either write the stock correctly or try a different symbol
-                  </p>
-                </Alert>
-              );
-            }
-           
+          return (
           
-          }
-          document.getElementById("CompanyNews").style.display = "none"
-          document.getElementById("container").style.display = "none"
-          document.getElementById("companyContainer").style.display = "none"
-          ReactDom.render(<AlertDismissibleExample/>, document.getElementById("mains"));
-        } else {
-          // REMOVE ALERT BOX
-          document.getElementById("errorBox").style.display = "none"
-          document.getElementById("container").style.display = "initial"
-          document.getElementById("CompanyNews").style.display = "flex"
+  <Plot
+   
+              data={[
+                {
+                  x: times.map(unix => Intl.DateTimeFormat('en-US', format).format(unix*1000)),
+                  close: arr.close,
+                  decreasing: {line: {color: 'red'}},
+                  high:arr.high,
+                  increasing: {line: {color: 'green'}},
+                  line: {color: 'rgba(31,119,180,1)'},
+                  low: arr.low,
+                  open: arr.open,
+                  type: 'candlestick',
+                },
+              ]}
+                layout={{
+                 
+                width: "700",
+                  title: stock.toUpperCase(),
+                  dragmode: 'zoom',
+                  showlegend: false,
+                  xaxis: {
+                      rangeslider: {
+                          visible: true
+                      }
+
+                  },
+                  yaxis: {
+                      autorange: true,
+                  }
+          }}
+          
          
+            />
+ 
+         
+          );
         }
+      }ReactDom.render(<StockChart/>, document.getElementById("stocksContainer"))
+     
+        // IF THE API DOESNT WORK SHOW ERROR ALERT
+       
     }).catch(function (error) {
-        console.log(error)
-        
-    });
     
+        console.log(error)  
+        if(error){
+        document.getElementById("themain").style.display = "none"
+        
+
+        function AlertDismissibleExample() {
+          const [show, setShow] = useState(true);
+        
+          if (show) {
+            return (
+              <Alert id="errorBox" variant="danger" onClose={() => setShow(false)} dismissible>
+                <Alert.Heading variant="success">Oh snap! we couldnt find market data for {document.getElementById("stocks").value}</Alert.Heading>
+                <p>
+                  You may not be connected to the internet! Also keep in mind this site is only for Us and Canadian stocks either write the stock correctly or try a different symbol.
+                </p>
+              </Alert>
+            );
+          } 
+         
+        
+        } ReactDom.render(<AlertDismissibleExample/>, document.getElementById("mains"));
+      }
+    });
+ 
 }
 
 
@@ -160,13 +260,15 @@ function validateBtn (val)  {
   return (
     <div className="Content" >
     
-     
+    
       <header  className="Content-header col-sm-10 col-md-9 col-lg-6 col-xl-3">
         
         <p id="results"> Stock Info </p>
+        <div id="inputs">
         <input type="text" id="stocks"  onKeyUp={ (e) => validateBtn(e.target.value) }></input>
-        <Button variant="dark" type="button" id="button"  onClick={loadDoc}>Enter a stock symbol  </Button>
+        <Button variant="light" type="button" id="button"  onClick={loadDoc}>Enter a stock symbol  </Button>
         <FaGithub className="col-sm-10 col-md-9 col-lg-6 col-xl-3" id="github" />
+        </div>
       </header> 
       <div id="mains" ></div>
     </div>

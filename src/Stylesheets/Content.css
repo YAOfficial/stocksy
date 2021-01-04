@@ -4,7 +4,6 @@
 
 .Content-header {
   text-align: center;
-  background-color: #ffffff;
 
   display: inline-grid;
   font-family: "Alata", sans-serif;
@@ -13,6 +12,7 @@
   align-items: center;
   margin-top: 2vw;
   flex-direction: row;
+  color: white !important;
   font-weight: 600;
   font-size: calc(10px + 2vmin);
   color: rgb(52 58 64);
@@ -24,4 +24,13 @@
 
 input {
   color: rgb(52 58 64);
+}
+
+#inputs {
+  display: flex;
+}
+
+#button {
+  border-top-right-radius: 1vw;
+  border-bottom-right-radius: 1vw;
 }

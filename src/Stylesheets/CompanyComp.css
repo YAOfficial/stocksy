@@ -4,10 +4,10 @@
 
 #container {
   height: 100vh;
-  margin: 0;
-  justify-content: center;
-  display: flex;
-  background: rgb(255, 255, 255);
+}
+
+#themain {
+  padding: 4vw;
 }
 
 #myCard {
@@ -15,7 +15,22 @@
   max-width: 100% !important;
   border-radius: 2vw;
 }
-#companyNewsContainer,
-#marketNewsContainer {
-  flex-wrap: wrap;
+
+.heads {
+  font-family: "Rowdies", cursive;
+  font-weight: 500;
+  font-size: calc(10px + 2vmin);
+  justify-content: center;
+}
+
+.bo {
+  display: none;
+}
+
+#stocksContainer {
+  display: inline-flex;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }

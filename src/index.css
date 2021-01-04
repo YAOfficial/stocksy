@@ -5,6 +5,49 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color: white;
+  background-color: #44b1ff !important;
+  background: linear-gradient(226deg, #18f3ff, #3218ff);
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 40s ease infinite;
+  -moz-animation: AnimationName 40s ease infinite;
+  animation: AnimationName 40s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 45% 0%;
+  }
+  50% {
+    background-position: 56% 100%;
+  }
+  100% {
+    background-position: 45% 0%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 45% 0%;
+  }
+  50% {
+    background-position: 56% 100%;
+  }
+  100% {
+    background-position: 45% 0%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 45% 0%;
+  }
+  50% {
+    background-position: 56% 100%;
+  }
+  100% {
+    background-position: 45% 0%;
+  }
 }
 
 code {
@@ -14,4 +57,13 @@ code {
 
 .alert {
   margin-bottom: 0 !important;
+}
+
+.card {
+  border-radius: 2vw !important;
+  padding: 1vw;
+}
+
+.card-img-top {
+  border-radius: 2vw !important;
 }

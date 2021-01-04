@@ -7,10 +7,10 @@ import {ListGroup, ListGroupItem} from 'react-bootstrap'
 class CompanyInfo extends React.Component {   
     render(){
         return (
-            <Card className="col-sm-6 col-md-6 col-lg-4 col-xl-3" >
-            <Card.Img variant="top" src={this.props.src} />
+            <Card >
+            <Card.Img fluid variant="top" src={this.props.src} />
             <Card.Body>
-              <Card.Title>{this.props.title}</Card.Title>
+              <Card.Title>{this.props.title.substring(0, 70)}...</Card.Title>
               <Card.Text>
               {this.props.source}
             
@@ -19,7 +19,7 @@ class CompanyInfo extends React.Component {
             
             <Card.Body>
             <Card.Text>
-              {this.props.words}
+              {this.props.words.substring(0, 70)}...
             </Card.Text>
               <Card.Link href={this.props.url}>View Story</Card.Link>
               

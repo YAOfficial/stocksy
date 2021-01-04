@@ -1,19 +1,20 @@
 import React from "react"
 import '../Stylesheets/CompanyComp.css';
-import Jumbotron from 'react-bootstrap/Jumbotron'
+
 import Card from 'react-bootstrap/Card'
-import {ListGroup, ListGroupItem} from 'react-bootstrap'
 
 
 class CompanyNews extends React.Component {   
     render(){
+
+      
         return (
             <>
-            <Card className="col-sm-6 col-md-6 col-lg-4 col-xl-12" >
+            <Card>
            
             <Card.Img variant="top" src={this.props.src} />
             <Card.Body>
-              <Card.Title>{this.props.title}</Card.Title>
+              <Card.Title>{this.props.title.substring(0, 70)}...</Card.Title>
               <Card.Text>
               {this.props.source}
             
@@ -22,7 +23,7 @@ class CompanyNews extends React.Component {
             
             <Card.Body>
             <Card.Text>
-              {this.props.words}
+              {this.props.words.substring(0, 20)}...
             </Card.Text>
               <Card.Link href={this.props.url}>View Story</Card.Link>
               
