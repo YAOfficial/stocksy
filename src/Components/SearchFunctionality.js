@@ -26,7 +26,7 @@ class App extends React.Component {
  
   const request3 = require('request');
   const request4 = require('request');
-  setInterval(function(){ 
+
   request3(`https://finnhub.io/api/v1/stock/price-target?symbol=${stock}&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, body) => {
     
   if (err) { return console.log(err); }
@@ -45,7 +45,7 @@ class App extends React.Component {
       }
   }ReactDom.render(<PredictionComponent/>, document.getElementById("pricesContainer"))
   });});
-}, 5000);
+
  
   var now = DateTime.local();
   let a = now.toFormat('dd');

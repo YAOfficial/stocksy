@@ -62,6 +62,7 @@ code {
 .card {
   border-radius: 2vw !important;
   padding: 1vw;
+  color: black !important;
 }
 
 .card-img-top {
