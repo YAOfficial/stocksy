@@ -10,7 +10,7 @@ import { FaGithub } from 'react-icons/fa';
 import CompanyNews from "./CompanyNews.js"
 import Card from 'react-bootstrap/Card'
 import PredictComp from "./PredictComp.js"
-import Plot from 'react-plotly.js';
+import Plot from 'react-plotly.js';import {ListGroup} from 'react-bootstrap'
 class App extends React.Component {
   
  render(){
@@ -33,13 +33,13 @@ class App extends React.Component {
   request4(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=bv5umqf48v6phr4c2icg`, { json: true }, (err, res, mane) => {
     if (err) { return console.log(err); }
     console.log(mane)
- 
+   
     console.log(body);
     class PredictionComponent extends React.Component{
       render(){
           return (
               <>
-             <PredictComp current={mane.c}  name={body.symbol} high={body.targetHigh} low={body.targetLow} mean={body.targetMean} />
+             <PredictComp name={body.symbol} high={body.targetHigh} low={body.targetLow} mean={body.targetMean} ></PredictComp>
               </>
           )
       }
@@ -160,8 +160,7 @@ else {
     
      var times = response.data.chart.result[0].timestamp
    
-     console.log(times)
-
+     let a = arr.close[arr.close.length - 1]
      document.getElementById("mains").style.display = "none"
      var format = {year: 'numeric', month: '2-digit' , day: 'numeric'};
 
@@ -267,7 +266,10 @@ function validateBtn (val)  {
         <div id="inputs">
         <input type="text" id="stocks"  onKeyUp={ (e) => validateBtn(e.target.value) }></input>
         <Button variant="light" type="button" id="button"  onClick={loadDoc}>Enter a stock symbol  </Button>
-        <FaGithub className="col-sm-10 col-md-9 col-lg-6 col-xl-3" id="github" />
+        <a   href="https://github.com/YAOfficial/stocksy"  target="_blank" rel="noopener noreferrer">
+              <FaGithub  id="github" />
+            </a>
+          
         </div>
       </header> 
       <div id="mains" ></div>

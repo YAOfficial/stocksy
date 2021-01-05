@@ -68,3 +68,7 @@ code {
 .card-img-top {
   border-radius: 2vw !important;
 }
+
+a {
+  color: #ffffff !important;
+}
