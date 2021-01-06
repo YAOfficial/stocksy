@@ -1,7 +1,7 @@
 import React from "react"
 import Card from 'react-bootstrap/Card'
 import {ListGroup} from 'react-bootstrap'
-// CREATING THE COMPANY INFO DIV AND GIIVING THE IMG AND H1 TAG VALUES 
+// here we use the values from the api basic react resuable component stuff 
 class PredictComp extends React.Component {   
 
     render(){

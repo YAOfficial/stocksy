@@ -1,9 +1,7 @@
 import React from "react"
 import '../Stylesheets/CompanyComp.css';
-import Jumbotron from 'react-bootstrap/Jumbotron'
 import Card from 'react-bootstrap/Card'
-import {ListGroup, ListGroupItem} from 'react-bootstrap'
-
+// here we use the values from the api basic react resuable component stuff 
 class CompanyInfo extends React.Component {   
     render(){
         return (

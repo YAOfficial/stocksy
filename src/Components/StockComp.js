@@ -1,5 +1,6 @@
 import React from "react"
 import Plot from 'react-plotly.js';
+// react resuable component to show the stock chart read plotly doc for more info on the codes included
   class StockChart extends React.Component {
     render() {
       return (

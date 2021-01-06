@@ -2,15 +2,18 @@ import React from "react"
 import ReactDom from "react-dom"
 import '../Stylesheets/CompanyComp.css';
 import MarketInfo from "./MarketInfo.js"
-/// make a card containg rechart stock market data and put it within cardcollum comapny info
+
+// api call 
 const request = require('request');
 
+// here we get the general market news 
 request('https://finnhub.io/api/v1/news?category=general&token=bv5umqf48v6phr4c2icg', { json: true }, (err, res, body) => {
   if (err) { return console.log(err); }
  
   console.log(body)
+  // get latest 6 news articles
  body.length = 6
-
+// and we map  through array and use their values
   class MarketComponent extends React.Component{
       render(){
 
@@ -28,10 +31,9 @@ request('https://finnhub.io/api/v1/news?category=general&token=bv5umqf48v6phr4c2
 
 
 
-// CREATING THE COMPANY INFO DIV AND GIIVING THE IMG AND H1 TAG VALUES 
+// this is our main content component now we make the layout and sort it out 
 class CompanyComp extends React.Component {   
     render(){
-    
         return(
         <div id="themain" >
          <div className="card-columns">
@@ -40,10 +42,8 @@ class CompanyComp extends React.Component {
        </div>
        <div  id="stocksContainer"></div>
        <div style={{color: "white"}}  id="companyInfo" className="row heads">
-         
         </div>
        <div class="card-columns">
-
        <div  id="companyNewsContainer"></div>
        </div>
         <div style={{color: "white"}} className="row heads">
