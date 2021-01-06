@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/stocksy/static/css/main.fed60779.chunk.css",
+    "main.css": "/stocksy/static/css/main.1f8adb27.chunk.css",
     "main.js": "/stocksy/static/js/main.525b881a.chunk.js",
     "main.js.map": "/stocksy/static/js/main.525b881a.chunk.js.map",
     "runtime-main.js": "/stocksy/static/js/runtime-main.2d8986db.js",
@@ -12,14 +12,14 @@
     "static/js/3.f9a51c99.chunk.js.map": "/stocksy/static/js/3.f9a51c99.chunk.js.map",
     "index.html": "/stocksy/index.html",
     "static/css/2.20aa2d7b.chunk.css.map": "/stocksy/static/css/2.20aa2d7b.chunk.css.map",
-    "static/css/main.fed60779.chunk.css.map": "/stocksy/static/css/main.fed60779.chunk.css.map",
+    "static/css/main.1f8adb27.chunk.css.map": "/stocksy/static/css/main.1f8adb27.chunk.css.map",
     "static/js/2.437a6afd.chunk.js.LICENSE.txt": "/stocksy/static/js/2.437a6afd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2d8986db.js",
     "static/css/2.20aa2d7b.chunk.css",
     "static/js/2.437a6afd.chunk.js",
-    "static/css/main.fed60779.chunk.css",
+    "static/css/main.1f8adb27.chunk.css",
     "static/js/main.525b881a.chunk.js"
   ]
 }
