@@ -230,6 +230,7 @@ else {
          
         
         } ReactDom.render(<AlertDismissibleExample/>, document.getElementById("mains"));
+        document.getElementById("mains").style.display = "inherit"
       }
     });
  
