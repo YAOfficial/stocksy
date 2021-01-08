@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/stocksy/static/css/main.b8828f32.chunk.css",
-    "main.js": "/stocksy/static/js/main.5b68ed2a.chunk.js",
-    "main.js.map": "/stocksy/static/js/main.5b68ed2a.chunk.js.map",
+    "main.js": "/stocksy/static/js/main.f0d639ec.chunk.js",
+    "main.js.map": "/stocksy/static/js/main.f0d639ec.chunk.js.map",
     "runtime-main.js": "/stocksy/static/js/runtime-main.cab3a8e5.js",
     "runtime-main.js.map": "/stocksy/static/js/runtime-main.cab3a8e5.js.map",
     "static/css/2.20aa2d7b.chunk.css": "/stocksy/static/css/2.20aa2d7b.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.20aa2d7b.chunk.css",
     "static/js/2.33bc098d.chunk.js",
     "static/css/main.b8828f32.chunk.css",
-    "static/js/main.5b68ed2a.chunk.js"
+    "static/js/main.f0d639ec.chunk.js"
   ]
 }
